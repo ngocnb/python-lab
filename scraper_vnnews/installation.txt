@@ -1,0 +1,3 @@
+feedparser
+mysql-connector-python
+beautifulsoup4
