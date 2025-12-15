@@ -1,4 +1,4 @@
-from chapter1 import sum_numbers, sum_numbers_gaussian_formula
+from chapter1 import sum_numbers, sum_numbers_gaussian_formula, sum_comprehension
 import pytest
 
 # --- 1. Test Cases for Valid Positive Integers (Core Functionality) ---
@@ -80,3 +80,14 @@ def test_gaussian_formula_n_is_convertible_string():
     """Tests a string that can be converted to a valid number."""
     # Sum up to 6-1 (5) = 15
     assert sum_numbers_gaussian_formula("6") == 15
+
+@pytest.mark.parametrize("n, expected_sum", [
+    (2, 1),       # Sum up to 2-1 (1) = 1
+    (3, 3),       # Sum up to 3-1 (2) = 1 + 2 = 3
+    (6, 15),      # Sum up to 6-1 (5) = 1 + ... + 5 = 15
+    (11, 55),     # Sum up to 11-1 (10) = 55
+    (101, 5050),  # Sum up to 101-1 (100) = 5050
+    (1000, 499500),# Sum up to 1000-1 (999)
+])
+def test_sum_comprehension_valid_positive_integers(n, expected_sum):
+    assert sum_comprehension(n) == expected_sum

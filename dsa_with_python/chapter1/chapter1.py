@@ -1,3 +1,5 @@
+from random import randrange
+
 def is_multiple(n, m):
     """Check if n is a multiple of m.
 
@@ -129,3 +131,39 @@ def sum_numbers_gaussian_formula(n):
     except Exception as e:
         print("Error message:", e)
         return False
+
+def sum_comprehension(n):
+    """ Return the sum of all numbers from 1 to n - 1 using comprehension syntax and Python built-in sum function.
+
+    Args:
+        n (int): The upper limit number.
+    
+    Returns:
+        int: The sum of all numbers from 1 to n - 1.
+    """
+
+    return sum(k for k in range(n))
+
+def sum_square_comprehension(n):
+    """ Return the sum of the square of all numbers from 1 to n - 1 using comprehension syntax and Python built-in sum function.
+
+    Args:
+        n (int): The upper limit number.
+    
+    Returns:
+        int: The sum of the square of all numbers from 1 to n - 1.
+    """
+
+    return sum(k * k for k in range(n))
+
+def random_choice(data):
+    """ Return a random element from the given list.
+
+    Args:
+        data (list): A list of elements.
+    
+    Returns:
+        element: A random element from the list.
+    """
+
+    return data[randrange(len(data))]
