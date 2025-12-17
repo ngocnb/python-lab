@@ -12,6 +12,16 @@ class CreditCard:
         limit
         credit limit (measured in dollars)
         """
+        if (
+            not isinstance(balance, (int, float))
+            or isinstance(balance, bool)
+            or balance < 0
+        ):
+            raise ValueError("Initial balance must be a non-negative number.")
+
+        if not isinstance(limit, (int, float)) or isinstance(limit, bool) or limit <= 0:
+            raise ValueError("Credit limit must be a positive number.")
+
         self._customer = customer
         self._bank = bank
         self._account = acnt
