@@ -12,12 +12,12 @@ class TestCreditCardCharge:
     def test_charge_success(self, card):
         """Standard valid charge within limit."""
         assert card.charge(100) is True
-        assert card.balance == 100
+        assert card.get_balance() == 100
 
     def test_charge_denied_over_limit(self, card):
         """Charge that exceeds the credit limit."""
         assert card.charge(1100) is False
-        assert card.balance == 0
+        assert card.get_balance() == 0
 
     @pytest.mark.parametrize("invalid_input", ["100", None, [100], True])
     def test_charge_invalid_types(self, card, invalid_input):
@@ -27,7 +27,7 @@ class TestCreditCardCharge:
     def test_charge_float_value(self, card):
         """Verify float values are processed correctly."""
         assert card.charge(50.5) is True
-        assert card.balance == 50.5
+        assert card.get_balance() == 50.5
 
 
 class TestCreditCardPayment:
@@ -40,7 +40,7 @@ class TestCreditCardPayment:
         """Verify that making a payment reduces the balance."""
         card.charge(500)
         card.make_payment(200)
-        assert card.balance == 300
+        assert card.get_balance() == 300
 
     @pytest.mark.parametrize("invalid_payment", ["100", None, [100], True, -50])
     def test_make_payment_invalid_types(self, card, invalid_payment):
