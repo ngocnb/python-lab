@@ -2,7 +2,26 @@ def my_pow(x, y):
     """
     Returns x raised to the power y.
     """
-    pass
+    result = 1
+
+    if y >= 1:
+        while y > 0:
+            result *= x
+            y -= 1
+
+        return result
+    if y == 0:
+        return result
+    if y < 0:
+        """
+        x^(-y) = 1 / x^y
+        """
+        result = my_pow(x, y * -1)
+        return 1 / result
+    # if 0 < y and y < 1:
+
+    return result
+
 
 def my_sqrt(x):
     """
