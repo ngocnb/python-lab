@@ -29,12 +29,21 @@ def test_ceil(x):
 invalid_inputs = ["a", None, [1], (1,)]
 
 @pytest.mark.parametrize("x", invalid_inputs)
-def test_basic_errors(x):
+def test_abs_errors(x):
     with pytest.raises(TypeError):
         my_abs(x)
+
+@pytest.mark.parametrize("x", invalid_inputs)
+def test_trunc_errors(x):
     with pytest.raises(TypeError):
         my_trunc(x)
+
+@pytest.mark.parametrize("x", invalid_inputs)
+def test_floor_errors(x):
     with pytest.raises(TypeError):
         my_floor(x)
+
+@pytest.mark.parametrize("x", invalid_inputs)
+def test_ceil_errors(x):
     with pytest.raises(TypeError):
         my_ceil(x)
