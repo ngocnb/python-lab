@@ -1,3 +1,7 @@
+from my_math.exp import my_exp
+from my_math.log import my_log
+
+
 def my_pow(x, y):
     """
     Returns x raised to the power y.
@@ -18,7 +22,11 @@ def my_pow(x, y):
         """
         result = my_pow(x, y * -1)
         return 1 / result
-    # if 0 < y and y < 1:
+    if 0 < y and y < 1:
+        """
+        x^(y) = exp^(y * log(x))
+        """
+        result = my_exp(y * my_log(x))
 
     return result
 

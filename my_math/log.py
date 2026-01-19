@@ -73,7 +73,11 @@ def my_log(x):
     temp_term = A
     threshold = 1e-10
 
-    print(f"A = {A}")
+    """
+    - We use the formula: ln(x) = 2 * [ A + (A^3)/3 + (A^5)/5 + ... ]
+    - Constant Base (A): (x - 1) / (x + 1)
+    - Current Term = (A^n) / n
+    """
     while my_abs(current_term) > threshold:
         total += current_term
         n += 2
