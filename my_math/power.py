@@ -35,4 +35,6 @@ def my_sqrt(x):
     """
     Returns the square root of x.
     """
-    pass
+    if x == 0:
+        return 0
+    return my_pow(x, 0.5)
