@@ -22,29 +22,27 @@ class Solution:
         if s == "":
             return ""
 
-        max_length = 1
-        result = s[0]
+        start = 0
+        end = 0
 
         for i in range(n):
-            temp = self.expandAroundCenter(s, i, i)
-            if max_length < len(temp):
-                max_length = len(temp)
-                result = temp
+            len1 = self.expandAroundCenter(s, i, i)
+            len2 = self.expandAroundCenter(s, i, i + 1)
 
-            if i + 1 <= n - 1:
-                temp = self.expandAroundCenter(s, i, i + 1)
-                if max_length < len(temp):
-                    max_length = len(temp)
-                    result = temp
+            max_len = max(len1, len2)
 
-        return result
+            if max_len > (end - start):
+                start = i - (max_len - 1) // 2
+                end = i + max_len // 2
+
+        return s[start : end + 1]
 
     def expandAroundCenter(self, s, left, right):
         while left >= 0 and right < len(s) and s[left] == s[right]:
             left -= 1
             right += 1
 
-        return s[left + 1 : right]
+        return right - left - 1
 
     def longestPalindromeDynamicProgramming(self, s: str) -> str:
         n = len(s)
